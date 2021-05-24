@@ -1,0 +1,15 @@
+web:
+  image: nginx:latest
+  ports: 
+    - "8080:80"
+  volumes: 
+    - ./default.conf:/etc/nginx/conf.d/default.conf
+  links: 
+    - nodejs
+  
+nodejs:
+  build: .docker
+  volumes: 
+    - ./code:/code
+  ports:
+    - "5000:5000"
